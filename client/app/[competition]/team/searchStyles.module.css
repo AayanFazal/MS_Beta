@@ -1,0 +1,15 @@
+.input:focus {
+    border: 1px solid var(--mantine-color-dark-2);
+}
+
+.option:hover {
+    background-color: var(--mantine-color-red-light) !important;
+}
+
+.option[data-combobox-selected='true'] {
+    background-color: var(--mantine-color-red-light) !important;
+}
+
+.label {
+    margin-bottom: 0.5rem;
+}

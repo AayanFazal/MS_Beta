@@ -27,6 +27,7 @@ export default function layout({ children, params }) {
                 <NavLink href={`/${params.competition}/picklist`} leftSection={<p>Pick List</p>} color='red' active={path.includes('picklist')} />
                 <NavLink href={`/${params.competition}/compare`} leftSection={<p>Compare</p>} color='red' active={path.includes('compare')} />
                 <NavLink href={`/${params.competition}/team`} leftSection={<p>Team</p>} color='red' active={path.includes('team')} />
+                <NavLink href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/download-data/${competition}`} leftSection={<p>Download Data</p>} color='red' />
             </AppShell.Navbar>
 
             <AppShell.Main>

@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
                 <ColorSchemeScript defaultColorScheme='dark' />
             </head>
             <body className={inter.className}>
-                <MantineProvider defaultColorScheme='dark'>{children}</MantineProvider>
+                <MantineProvider defaultColorScheme='dark' theme={{ fontFamily: inter.style }}>{children}</MantineProvider>
             </body>
         </html>
     )
