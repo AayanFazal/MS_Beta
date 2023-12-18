@@ -29,7 +29,7 @@ const csvFilePath = 'path/to/your/file.csv';
 fs.createReadStream(csvFilePath)
   .pipe(csv())
   .on('data', (row) => {
-    // Adjust column names based on your CSV structure and MySQL table
+    // Adjust column names based on CSV structure and MySQL table
     const sql = 'INSERT INTO your_table_name SET ?';
 
     // Execute the SQL query
