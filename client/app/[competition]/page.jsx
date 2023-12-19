@@ -1,16 +1,16 @@
+'use client'
 import { notFound } from 'next/navigation'
-import React from 'react'
-
-function getCompetition() {
-    return true
-}
+import React, { useContext } from 'react'
+import { AllTeamsDataContext } from './layout'
 
 export default function page({ params }) {
-    const competitionExists = getCompetition()
+    const allTeamsData = useContext(AllTeamsDataContext)
 
-    if (!competitionExists) notFound()
+    if (allTeamsData == false) {
+        return notFound()
+    }
 
     return (
-        <div>Competition</div>
+        <div>{JSON.stringify(allTeamsData)}</div>
     )
 }
