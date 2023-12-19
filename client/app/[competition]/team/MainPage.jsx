@@ -1,10 +1,12 @@
 'use client'
 import { Autocomplete } from '@mantine/core'
-import React, { useState } from 'react'
-import classes from './searchStyles.module.css'
+import { useLocalStorage } from '@mantine/hooks'
+import React, { useContext, useState } from 'react'
+import { AllTeamsDataContext } from '../layout'
 
 export default function MainPage({ autoCompleteData }) {
-    const [query, setQuery] = useState()
+    const allTeamsData = useContext(AllTeamsDataContext)
+    const [query, setQuery] = useLocalStorage({ key: 'data', defaultValue: 'loading...' })
 
     return (
         <div>
@@ -16,7 +18,6 @@ export default function MainPage({ autoCompleteData }) {
                 w='50%'
                 mx='auto'
                 onOptionSubmit={value => setQuery(value)}
-                classNames={{ input: classes.input, option: classes.option, label: classes.label }}
             />
             <p>{query}</p>
         </div>

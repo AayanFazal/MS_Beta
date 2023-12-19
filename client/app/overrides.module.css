@@ -1,5 +1,13 @@
 .input:focus {
-    border: 1px solid var(--mantine-color-dark-2);
+    border: 1px solid var(--mantine-color-dark-2) !important; 
+}
+
+.input:focus-within {
+    border: 1px solid var(--mantine-color-dark-2) !important;
+}
+
+.input[data-expanded="true"] {
+    border: 1px solid var(--mantine-color-dark-2) !important; 
 }
 
 .option:hover {

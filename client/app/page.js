@@ -29,30 +29,4 @@ export default function Home() {
             </Flex>
         </>
     )
-
-    // return (
-    //     <>
-    //         <Flex align='center' direction='column'>
-    //             <Text fz='xl' mt='lg'>Competitions:</Text>
-    //             <Group justify='center' my='xl'>
-    //                 <div>
-    //                     <Anchor component={Link} href='/Hatboro Havoc 2023'>Hatboro Havoc 2023</Anchor>
-    //                 </div>
-    //                 <Divider orientation='vertical' size='xs' />
-    //                 <div>
-    //                     <Anchor component={Link} href='/download-data/Hatboro Havoc 2023'>Download CSV Data</Anchor>
-    //                 </div>
-    //             </Group>
-    //             <Group justify='center'>
-    //                 <div>
-    //                     <Anchor component={Link} href='/Brunswick Eruption 2023'>Brunswick Eruption 2023</Anchor>
-    //                 </div>
-    //                 <Divider orientation='vertical' size='xs' />
-    //                 <div>
-    //                     <Anchor component={Link} href='/download-data/Brunswick Eruption 2023'>Download CSV Data</Anchor>
-    //                 </div>
-    //             </Group>
-    //         </Flex>
-    //     </>
-    // )
 }

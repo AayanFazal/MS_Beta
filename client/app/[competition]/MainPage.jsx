@@ -1,32 +1,6 @@
-'use client'
-import { AppShell, Burger, Divider, Flex, NavLink, Text } from '@mantine/core'
-import { useDidUpdate, useDisclosure } from '@mantine/hooks';
-import Link from 'next/link';
-import { notFound, usePathname } from 'next/navigation';
-import React, { createContext, useEffect, useState } from 'react'
+import React from 'react'
 
-export const AllTeamsDataContext = createContext()
-
-
-export default function layout({ children, params }) {
-    const [opened, { toggle }] = useDisclosure();
-    const path = usePathname()
-    const competition = decodeURI(params.competition)
-    const [allTeamsData, setAllTeamsData] = useState()
-
-    useEffect(() => {
-        // code is commented out since it doesn't do anything yet
-        // fetch(`${NEXT_PUBLIC_BACKEND_URL}/api/${competition}/all/teams`)
-        //     .then(res => {
-        //         if (!res.ok) {
-        //             return false
-        //         } else {
-        //             return res.json()
-        //         }
-        //     })
-        //     .then(data => setAllTeamsData(data))
-    }, [])
-
+export default function mainpage({ stuff, params }) {
     return (
         <AppShell header={{ height: 60 }} navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened }, }} padding="md" >
 
@@ -50,7 +24,7 @@ export default function layout({ children, params }) {
 
             <AppShell.Main>
                 <AllTeamsDataContext.Provider value={allTeamsData}>
-                    {children}
+                    {stuff}
                 </AllTeamsDataContext.Provider>
             </AppShell.Main>
 
