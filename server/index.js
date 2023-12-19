@@ -1,48 +1,66 @@
-const fs = require('fs');
-const csv = require('csv-parser');
-const mysql = require('mysql');
-
-// MySQL database connection configuration
-const dbConfig = {
-  host: 'your_mysql_host',
-  user: 'your_mysql_user',
-  password: 'your_mysql_password',
-  database: 'your_mysql_database',
-};
-
-// Create a MySQL connection
-const connection = mysql.createConnection(dbConfig);
-
-// Connect to MySQL
+const express = require('express');
+const mysql = require('mysql2');
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'AayanFazal2007',
+    database: 'ScoutSchema'
+  });
+const app = express(); 
+// Connect to the database
 connection.connect((err) => {
   if (err) {
-    console.error('Error connecting to MySQL:', err);
+    console.error('Error connecting to MySQL database:', err);
     return;
   }
-  console.log('Connected to MySQL');
+  console.log('Connected to MySQL database');
 });
 
-// Specify the path to CSV file
-const csvFilePath = 'path/to/your/file.csv';
+// Returns Competition names 
+app.get('/api/comp', (req, res) => {
+  connection.query('SHOW tables', (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
 
-// Read CSV file and insert data into MySQL
-fs.createReadStream(csvFilePath)
-  .pipe(csv())
-  .on('data', (row) => {
-    // Adjust column names based on CSV structure and MySQL table
-    const sql = 'INSERT INTO your_table_name SET ?';
-
-    // Execute the SQL query
-    connection.query(sql, row, (err, results) => {
-      if (err) {
-        console.error('Error inserting row:', err);
-      } else {
-        console.log('Row inserted:', results);
-      }
-    });
-  })
-  .on('end', () => {
-    // Close the MySQL connection when finished
-    connection.end();
-    console.log('MySQL connection closed');
+    // Send the data as JSON to the client
+    res.json(results);
   });
+});
+
+//Returns specific team data 
+app.get('/api/:comp/:teamNum', (req, res) => {
+    const getComp = req.params.comp; 
+    const getTeam = req.params.teamNum; 
+    connection.query('SELECT  * FROM ?? WHERE teamNum = ?;',[getComp,getTeam],(err, results) => {
+      if (err) {
+        console.error('Error executing query:', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+  
+      // Send the data as JSON to the client
+      res.json(results);
+    });
+  });
+
+  //Returns all teams in selected comp
+  app.get('/api/:comp/all/teams', (req, res) => {
+    const getComp = req.params.comp; 
+    connection.query('SELECT DISTINCT teamNum FROM ?? ORDER BY teamNum ASC;',[getComp],(err, results) => {
+      if (err) {
+        console.error('Error executing query:', err);
+        return res.status(500).json({ error: 'Internal Server Error' });
+      }
+  
+      // Send the data as JSON to the client
+      res.json(results);
+    });
+  });
+
+
+// Start the server
+const PORT = 3036;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
