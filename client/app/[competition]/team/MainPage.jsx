@@ -1,12 +1,17 @@
 'use client'
 import { Autocomplete } from '@mantine/core'
-import { useLocalStorage } from '@mantine/hooks'
-import React, { useContext, useState } from 'react'
+import { useDidUpdate, useLocalStorage } from '@mantine/hooks'
+import React, { useContext, useEffect, useState } from 'react'
 import { AllTeamsDataContext } from '../layout'
+import { redirect } from 'next/navigation'
 
-export default function MainPage({ autoCompleteData }) {
+export default function MainPage({ autoCompleteData, params }) {
     const allTeamsData = useContext(AllTeamsDataContext)
     const [query, setQuery] = useLocalStorage({ key: 'data', defaultValue: 'loading...' })
+
+    useDidUpdate(() => {
+        redirect(`./team/${query}`)
+    }, [query])
 
     return (
         <div>

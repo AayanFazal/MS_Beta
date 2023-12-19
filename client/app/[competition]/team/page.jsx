@@ -11,6 +11,6 @@ export default async function page({ params }) {
     const autoCompleteData = await getTeams(decodeURI(params.competition))
 
     return (
-        <MainPage autoCompleteData={autoCompleteData} />
+        <MainPage autoCompleteData={autoCompleteData} params={params} />
     )
 }
