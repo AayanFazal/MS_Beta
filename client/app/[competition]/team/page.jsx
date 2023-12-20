@@ -1,16 +1,31 @@
-'use server'
+'use client'
+import { Autocomplete, Grid, Table } from '@mantine/core'
+import { useDidUpdate } from '@mantine/hooks'
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
+import { AllTeamsDataContext } from '../layout'
+import { useRouter } from 'next/navigation'
 
-import MainPage from "./MainPage"
+export default function MainPage({ params }) {
+    const allTeamsData = useContext(AllTeamsDataContext)
+    const [query, setQuery] = useState()
+    const autoCompleteData = [1712, 2590, 2559]
+    const router = useRouter()
 
-async function getTeams(competition) {
-    console.log(competition)
-    return [2590, 1712, 2559] // need to write logic to retrive team names using context
-}
-
-export default async function page({ params }) {
-    const autoCompleteData = await getTeams(decodeURI(params.competition))
+    useDidUpdate(() => {
+        router.push(`/${params.competition}/team/${query}`)
+    }, [query])
 
     return (
-        <MainPage autoCompleteData={autoCompleteData} params={params} />
+        <div>
+            <Autocomplete
+                type='text'
+                label='Search for a team'
+                placeholder='Enter a team...'
+                data={autoCompleteData}
+                w='50%'
+                mx='auto'
+                onOptionSubmit={value => setQuery(value)}
+            />
+        </div>
     )
 }
