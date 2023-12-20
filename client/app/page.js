@@ -24,19 +24,17 @@ export default function Home() {
             <>
                 <Flex align='center' direction='column'>
                     <Text fz='xl' mt='lg'>Competitions:</Text>
-                    {competitions.map(({ Tables_in_scoutschema }) => {
-                        return (
-                            <Group justify='center' mt='lg' key={index}>
-                                <div>
-                                    <Anchor component={Link} href={Tables_in_scoutschema}>{Tables_in_scoutschema}</Anchor>
-                                </div>
-                                <Divider orientation='vertical' size='xs' />
-                                <div>
-                                    <Anchor component={Link} href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/download-data/${Tables_in_scoutschema}`}>Download CSV Data</Anchor>
-                                </div>
-                            </Group>
-                        )
-                    })}
+                    {competitions.map({ Tables_in_scoutschema }) => {
+                        <Group justify='center' mt='lg' key={index}>
+                            <div>
+                                <Anchor component={Link} href={Tables_in_scoutschema}>{Tables_in_scoutschema}</Anchor>
+                            </div>
+                            <Divider orientation='vertical' size='xs' />
+                            <div>
+                                <Anchor component={Link} href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/download-data/${Tables_in_scoutschema}`}>Download CSV Data</Anchor>
+                            </div>
+                        </Group>
+                    }}
                 </Flex>
             </>
         )
