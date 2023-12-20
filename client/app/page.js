@@ -24,7 +24,7 @@ export default function Home() {
             <>
                 <Flex align='center' direction='column'>
                     <Text fz='xl' mt='lg'>Competitions:</Text>
-                    {competitions.map({ Tables_in_scoutschema } => {
+                    {competitions.map(({ Tables_in_scoutschema }) => {
                         <Group justify='center' mt='lg' key={index}>
                             <div>
                                 <Anchor component={Link} href={Tables_in_scoutschema}>{Tables_in_scoutschema}</Anchor>
