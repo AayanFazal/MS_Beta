@@ -10,7 +10,7 @@ export default function page({ params }) {
     const [teamData, setTeamData] = useState(false)
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${params.competition}/${params.team}`)
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${params.competition}/${params.team}`, { method: 'GET', mode: 'cors' })
             .then(res => {
                 if (!res.ok) {
                     return false

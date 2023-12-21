@@ -14,7 +14,7 @@ export default function layout({ children, params }) {
     const [allTeamsData, setAllTeamsData] = useState()
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${competition}/all/teams`)
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${competition}/all/teams`, { method: 'GET', mode: 'cors' })
             .then(res => {
                 if (!res.ok) {
                     return false

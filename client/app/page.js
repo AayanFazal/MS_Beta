@@ -8,7 +8,7 @@ export default function Home() {
     const [competitions, setCompetitions] = useState(false)
 
     useEffect(() => {
-        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/comp`)
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/comp`, { method: 'GET', mode: 'cors' })
             .then(res => {
                 if (!res.ok) {
                     return false
