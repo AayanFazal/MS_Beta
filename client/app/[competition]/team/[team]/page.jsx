@@ -36,7 +36,7 @@ export default function page({ params }) {
     }
 
     return (
-        <Center w='100%'>
+        <Center h={'calc(100dvh - 100px'} w={'100%'}>
             <Loader color='red' />
         </Center>
     )

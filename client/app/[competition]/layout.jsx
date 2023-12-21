@@ -33,9 +33,9 @@ export default function layout({ children, params }) {
         <AppShell header={{ height: 60 }} navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened }, }} padding="md" >
 
             <AppShell.Header>
-                <Flex justify={{ base: 'flex-start', sm: 'center' }} align='center' h='100%' mx={{ base: 'md', sm: 'none' }}>
-                    <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="md" />
-                    <Text ml={{ base: 'sm', sm: 'none' }}><Link href='/'>FRC 2590 NEMƎSIS Master Scout</Link></Text>
+                <Flex justify={{ base: 'space-around', sm: 'center' }} align='center' h='100%' mx={{ base: 'none', sm: 'none' }} direction={{ base: 'row-reverse' }}>
+                    <Burger opened={opened} onClick={toggle} hiddenFrom="sm" />
+                    <Text><Link href='/'>FRC 2590 NEMƎSIS Master Scout</Link></Text>
                 </Flex>
             </AppShell.Header>
 
