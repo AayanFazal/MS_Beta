@@ -11,7 +11,7 @@ export default function page() {
                 label='Search for a team'
                 placeholder='Enter a team...'
                 data={autoCompleteData}
-                w='50%'
+                w='min(100%, 40rem)'
                 mx='auto'
             // onOptionSubmit={value => setQuery(value)}
             />
