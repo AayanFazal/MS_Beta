@@ -8,7 +8,7 @@ export default function page() {
 
     function queryInit() {
         if (localStorage.getItem('query')) return JSON.parse(localStorage.getItem('query'))
-        return ''
+        return []
     }
 
     useEffect(() => {
