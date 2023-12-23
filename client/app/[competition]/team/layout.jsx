@@ -6,9 +6,9 @@ import { AllTeamsDataContext } from '../layout'
 import { useRouter } from 'next/navigation'
 
 export default function layout({ params, children }) {
+    const autoCompleteData = [1712, 2590, 2559]
     const allTeamsData = useContext(AllTeamsDataContext)
     const [query, setQuery] = useLocalStorage({ key: 'query', defaultValue: '' })
-    const autoCompleteData = [1712, 2590, 2559]
     const router = useRouter()
 
     useDidUpdate(() => {
