@@ -5,13 +5,13 @@ import Link from 'next/link';
 import { notFound, usePathname } from 'next/navigation';
 import React, { createContext, useEffect, useState } from 'react'
 
-export const AllTeamsDataContext = createContext()
+export const AllTeamsNumsContext = createContext()
 
 export default function layout({ children, params }) {
     const [opened, { toggle }] = useDisclosure();
     const path = usePathname()
     const competition = decodeURI(params.competition)
-    const [allTeamsData, setAllTeamsData] = useState()
+    const [allTeamNums, setAllTeamNums] = useState()
 
     useEffect(() => {
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${competition}/all/teams`, { method: 'GET' })
@@ -22,12 +22,14 @@ export default function layout({ children, params }) {
                     return res.json()
                 }
             })
-            .then(data => setAllTeamsData(data))
+            .then(data => {
+                let teamNums = []
+                data.map(({ teamNum }) => {
+                    teamNums.push(teamNum)
+                })
+                setAllTeamNums(teamNums)
+            })
     }, [])
-
-    useEffect(() => {
-        console.log(allTeamsData)
-    }, [allTeamsData])
 
     return (
         <AppShell header={{ height: 60 }} navbar={{ width: 300, breakpoint: 'sm', collapsed: { mobile: !opened }, }} padding="md" >
@@ -42,7 +44,6 @@ export default function layout({ children, params }) {
             <AppShell.Navbar p="md">
                 <Text fz='xl' ta='center'>{competition}</Text>
                 <Divider my='sm' />
-                <NavLink href={`/${params.competition}/picklist`} leftSection={<p>Pick List</p>} color='red' active={path == `/${params.competition}/picklist`} />
                 <NavLink href={`/${params.competition}/compare`} leftSection={<p>Compare</p>} color='red' active={path == `/${params.competition}/compare`} />
                 <NavLink href={`/${params.competition}/team`} leftSection={<p>Team</p>} color='red' active={path.includes('team')} />
                 <NavLink href={`${process.env.NEXT_PUBLIC_BACKEND_URL} /download-data/${competition}`} leftSection={<p>Download Data</p>} color='red' />
@@ -50,9 +51,9 @@ export default function layout({ children, params }) {
 
 
             <AppShell.Main>
-                <AllTeamsDataContext.Provider value={allTeamsData}>
+                <AllTeamsNumsContext.Provider value={allTeamNums}>
                     {children}
-                </AllTeamsDataContext.Provider>
+                </AllTeamsNumsContext.Provider>
             </AppShell.Main>
 
         </AppShell >

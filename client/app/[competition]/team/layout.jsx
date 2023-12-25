@@ -2,13 +2,13 @@
 import { Autocomplete, Grid, Table } from '@mantine/core'
 import { useDidUpdate, useLocalStorage } from '@mantine/hooks'
 import React, { useCallback, useContext, useEffect, useRef, useState } from 'react'
-import { AllTeamsDataContext } from '../layout'
+import { AllTeamsNumsContext } from '../layout'
 import { useRouter } from 'next/navigation'
 
 export default function layout({ params, children }) {
     const autoCompleteData = [1712, 2590, 2559]
-    const allTeamsData = useContext(AllTeamsDataContext)
-    const [query, setQuery] = useLocalStorage({ key: 'query', defaultValue: '' })
+    const allTeamsData = useContext(AllTeamsNumsContext)
+    const [query, setQuery] = useLocalStorage({ key: 'teamQuery', defaultValue: '' })
     const router = useRouter()
 
     useDidUpdate(() => {
@@ -28,6 +28,7 @@ export default function layout({ params, children }) {
                 onInput={e => {
                     e.target.value == '' && setQuery(e.target.value)
                 }}
+                defaultValue={localStorage.getItem('teamQuery') ? localStorage.getItem('teamQuery').replaceAll('"', '') : undefined}
             />
             {children}
         </div>

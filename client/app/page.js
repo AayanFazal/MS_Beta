@@ -41,6 +41,7 @@ export default function Home() {
             </>
         )
     }
+
     return (
         <Center h={'100vh'} w={'100vw'}>
             <Loader color='red' />
