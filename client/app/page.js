@@ -23,21 +23,21 @@ export default function Home() {
         return (
             <>
                 <Text fz='xl' mt='lg' ta='center'>FRC 2590 NEMƎSIS Master Scout</Text>
-                <Table w='min(100%, 40rem)' mx='auto' ta='center' mt='lg' verticalSpacing='sm'>
+                <Table w='min(100%, 40rem)' mx='auto' mt='lg' verticalSpacing='sm'>
                     <Table.Thead>
                         <Table.Tr>
-                            <Table.Th>Competition</Table.Th>
-                            <Table.Th>CSV Download</Table.Th>
+                            <Table.Th ta='center'>Competition</Table.Th>
+                            <Table.Th ta='center'>CSV Download</Table.Th>
                         </Table.Tr>
                     </Table.Thead>
                     <Table.Tbody>
                         {competitions.map((competition, index) => {
                             return (
                                 <Table.Tr key={index}>
-                                    <Table.Th>
+                                    <Table.Th ta='center'>
                                         <Anchor component={Link} href={competition.Tables_in_scoutschema.toString()}>{competition.Tables_in_scoutschema}</Anchor>
                                     </Table.Th>
-                                    <Table.Th>
+                                    <Table.Th ta='center'>
                                         <Anchor component={Link} href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/download-data/${competition.Tables_in_scoutschema}`}>Download CSV Data</Anchor>
                                     </Table.Th>
                                 </Table.Tr>
