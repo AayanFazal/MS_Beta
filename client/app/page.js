@@ -35,10 +35,10 @@ export default function Home() {
                             return (
                                 <Table.Tr key={index}>
                                     <Table.Th ta='center'>
-                                        <Anchor component={Link} c='#f44336' href={competition.Tables_in_scoutschema.toString()}>{competition.Tables_in_scoutschema}</Anchor>
+                                        <Anchor component={Link} href={competition.Tables_in_scoutschema.toString()}>{competition.Tables_in_scoutschema}</Anchor>
                                     </Table.Th>
                                     <Table.Th ta='center'>
-                                        <Anchor component={Link} c='#f44336' href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/download-data/${competition.Tables_in_scoutschema}`}>Download CSV Data</Anchor>
+                                        <Anchor component={Link} href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/download-data/${competition.Tables_in_scoutschema}`}>Download CSV Data</Anchor>
                                     </Table.Th>
                                 </Table.Tr>
                             )
