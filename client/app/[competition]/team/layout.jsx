@@ -6,8 +6,7 @@ import { AllTeamsNumsContext } from '../layout'
 import { useRouter } from 'next/navigation'
 
 export default function layout({ params, children }) {
-    const autoCompleteData = [1712, 2590, 2559]
-    const allTeamsData = useContext(AllTeamsNumsContext)
+    const autoCompleteData = useContext(AllTeamsNumsContext)
     const [query, setQuery] = useLocalStorage({ key: 'teamQuery', defaultValue: '' })
     const router = useRouter()
 
