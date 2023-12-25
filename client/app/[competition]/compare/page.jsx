@@ -67,11 +67,11 @@ export default function page({ params }) {
             {loading == false && searchError == undefined && (
                 <Table mt='md'>
                     <Table.Thead>
-                        {Object.keys(data[0]).map((key, index) => {
+                        {/* {Object.keys(data[0]).map((key, index) => {
                             return (
                                 <Table.Th key={index}>{key}</Table.Th>
                             )
-                        })}
+                        })} */}
                     </Table.Thead>
                     <Table.Tbody>
                         {data.map((info, index) => {
