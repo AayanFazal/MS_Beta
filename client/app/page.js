@@ -22,7 +22,7 @@ export default function Home() {
     if (competitions) {
         return (
             <>
-                <Text fz='xl' mt='lg' ta='center'>Competitions:</Text>
+                <Text fz='xl' mt='lg' ta='center'>FRC 2590 NEMƎSIS Master Scout</Text>
                 <Table w='min(100%, 40rem)' mx='auto'>
                     <Table.Thead>
                         <Table.Tr>
