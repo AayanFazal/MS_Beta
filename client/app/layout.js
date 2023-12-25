@@ -28,7 +28,7 @@ const theme = createTheme({
                 label: classes.label
             }
         }
-    },
+    }
 })
 
 export default function RootLayout({ children }) {
