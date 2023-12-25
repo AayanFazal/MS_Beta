@@ -21,7 +21,7 @@ export default function page({ params }) {
         if (query.length == 3) {
             console.log(query.length)
             setLoading(true)
-            fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${params.competition}/${params.team}`, { method: 'GET' })
+            fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/${params.competition}/compare/${query[0]}/${query[1]}/${query[2]}`, { method: 'GET' })
                 .then(res => {
                     if (!res.ok) {
                         return 'Not Found'
@@ -67,51 +67,7 @@ export default function page({ params }) {
             {loading == false && searchError == undefined && (
                 <Table mt='md'>
                     <Table.Thead>
-                        {/* {Object.keys(data[0]).map((key, index) => {
-                            return (
-                                <Table.Th key={index}>{key}</Table.Th>
-                            )
-                        })} */}
-                        {Object.keys({
-                            "id": 1,
-                            "matchNum": "1",
-                            "teamNum": "2607",
-                            "comment": "Got cone stuck in bed pan and played defense the rest of the match",
-                            "scoutName": "Achyut",
-                            "startingPos": "C",
-                            "leaveCommunity": "1",
-                            "coneHigh_atn": "1",
-                            "coneMid_atn": "0",
-                            "coneLow_atn": 0,
-                            "coneMissed_atn": 0,
-                            "cubeHigh_atn": 0,
-                            "cubeMid_atn": 0,
-                            "cubeLow_atn": 0,
-                            "cubeMissed_atn": 0,
-                            "chargStat_atn": "None",
-                            "coneHigh_tp": "0",
-                            "coneMid_tp": "0",
-                            "coneLow_tp": "0",
-                            "coneMissed_tp": 0,
-                            "cubeHigh_tp": 0,
-                            "cubeMid_tp": 0,
-                            "cubeLow_tp": 1,
-                            "cubeMissed_tp": 0,
-                            "intke_Floor_InComm": 0,
-                            "intke_Floor_OutComm": 2,
-                            "intke_shelf": 0,
-                            "intkeChute": 0,
-                            "defQuant": 75,
-                            "defQual": 3,
-                            "chargStat_end": "Engaged",
-                            "addRobot": "1",
-                            "speed": "-1",
-                            "moveBtwnNode": "-1",
-                            "droppedCycl": "-1",
-                            "longIntake": "-1",
-                            "droppedHit": -1,
-                            "tripleClimb": -1
-                        }).map((key, index) => {
+                        {Object.keys(data[0]).map((key, index) => {
                             return (
                                 <Table.Th key={index}>{key}</Table.Th>
                             )
