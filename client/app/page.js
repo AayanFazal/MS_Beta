@@ -23,7 +23,7 @@ export default function Home() {
         return (
             <>
                 <Text fz='xl' mt='lg' ta='center'>FRC 2590 NEMƎSIS Master Scout</Text>
-                <Table w='min(100%, 40rem)' mx='auto'>
+                <Table w='min(100%, 40rem)' mx='auto' ta='center'>
                     <Table.Thead>
                         <Table.Tr>
                             <Table.Th>Competition</Table.Th>
