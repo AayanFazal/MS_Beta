@@ -64,7 +64,7 @@ export default function page({ params }) {
                     <Loader color='red' />
                 </Center>
             )}
-            {loading == false && (
+            {loading == false && searchError == undefined && (
                 <Table mt='md'>
                     <Table.Thead>
                         {Object.keys(data[0]).map((key, index) => {
