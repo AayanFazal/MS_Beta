@@ -22,31 +22,29 @@ export default function Home() {
     if (competitions) {
         return (
             <>
-                <Center>
-                    <Text fz='xl' mt='lg'>Competitions:</Text>
-                    <Table>
-                        <Table.Thead>
-                            <Table.Tr>
-                                <Table.Th>Competition</Table.Th>
-                                <Table.Th>CSV Download</Table.Th>
-                            </Table.Tr>
-                        </Table.Thead>
-                        <Table.Tbody>
-                            {competitions.map((competition, index) => {
-                                return (
-                                    <Table.Tr key={index}>
-                                        <Table.Th>
-                                            <Anchor component={Link} href={competition.Tables_in_scoutschema.toString()}>{competition.Tables_in_scoutschema}</Anchor>
-                                        </Table.Th>
-                                        <Table.Th>
-                                            <Anchor component={Link} href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/download-data/${competition.Tables_in_scoutschema}`}>Download CSV Data</Anchor>
-                                        </Table.Th>
-                                    </Table.Tr>
-                                )
-                            })}
-                        </Table.Tbody>
-                    </Table>
-                </Center>
+                <Text fz='xl' mt='lg' ta='center'>Competitions:</Text>
+                <Table w='min(100%, 40rem)' mx='auto'>
+                    <Table.Thead>
+                        <Table.Tr>
+                            <Table.Th>Competition</Table.Th>
+                            <Table.Th>CSV Download</Table.Th>
+                        </Table.Tr>
+                    </Table.Thead>
+                    <Table.Tbody>
+                        {competitions.map((competition, index) => {
+                            return (
+                                <Table.Tr key={index}>
+                                    <Table.Th>
+                                        <Anchor component={Link} href={competition.Tables_in_scoutschema.toString()}>{competition.Tables_in_scoutschema}</Anchor>
+                                    </Table.Th>
+                                    <Table.Th>
+                                        <Anchor component={Link} href={`${process.env.NEXT_PUBLIC_BACKEND_URL}/download-data/${competition.Tables_in_scoutschema}`}>Download CSV Data</Anchor>
+                                    </Table.Th>
+                                </Table.Tr>
+                            )
+                        })}
+                    </Table.Tbody>
+                </Table>
             </>
         )
     }

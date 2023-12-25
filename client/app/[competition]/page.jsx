@@ -1,16 +1,7 @@
-'use client'
-import { notFound } from 'next/navigation'
-import React, { useContext } from 'react'
-import { AllTeamsDataContext } from './layout'
+import React from 'react'
 
-export default function page({ params }) {
-    // const allTeamsData = useContext(AllTeamsDataContext)
-
-    // if (allTeamsData == false) {
-    //     return notFound()
-    // }
-
-    // return (
-    //     <div>{JSON.stringify(allTeamsData)}</div>
-    // )
+export default function page() {
+    return (
+        <div>page</div>
+    )
 }
